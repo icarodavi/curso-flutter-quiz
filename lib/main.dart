@@ -6,36 +6,52 @@ void main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
   final List<Map<String, Object>> _perguntas = [
     {
       'texto': 'Qual é a sua cor favorita!?',
-      'respostas': ['Preto', 'Amarelo', 'Vermelho', 'Branco'],
+      'respostas': [
+        {'texto': 'Preto', 'pontuacao': 7},
+        {'texto': 'Amarelo', 'pontuacao': 8},
+        {'texto': 'Vermelho', 'pontuacao': 9},
+        {'texto': 'Branco', 'pontuacao': 10},
+      ],
     },
     {
       'texto': 'Qual é o seu animal favorito?',
-      'respostas': ['Cachorro', 'Gato', 'Elefante', 'Boi'],
+      'respostas': [
+        {'texto': 'Cachorro', 'pontuacao': 10},
+        {'texto': 'Gato', 'pontuacao': 9},
+        {'texto': 'Elefante', 'pontuacao': 8},
+        {'texto': 'Boi', 'pontuacao': 7},
+      ],
     },
     {
       'texto': 'Qual seu dia preferido da semana?',
       'respostas': [
-        'Seguda',
-        'Terça',
-        'Quarta',
-        'Quinta',
-        'Sexta',
-        'Sábado',
-        'Domingo'
+        {'texto': 'Seguda', 'pontuacao': 4},
+        {'texto': 'Terça', 'pontuacao': 5},
+        {'texto': 'Quarta', 'pontuacao': 6},
+        {'texto': 'Quinta', 'pontuacao': 7},
+        {'texto': 'Sexta', 'pontuacao': 8},
+        {'texto': 'Sábado', 'pontuacao': 9},
+        {'texto': 'Domingo', 'pontuacao': 10},
       ],
     },
     {
       'texto': 'Qual sua comida preferida?',
-      'respostas': ['Doce', 'Salgado', 'Amargo'],
+      'respostas': [
+        {'texto': 'Doce', 'pontuacao': 10},
+        {'texto': 'Salgado', 'pontuacao': 9},
+        {'texto': 'Amargo', 'pontuacao': 8},
+      ],
     }
   ];
 
-  void _responder() {
+  void _responder(int ponto) {
     setState(() {
       _perguntaSelecionada++;
+      _pontuacaoTotal += ponto;
       // if (_perguntaSelecionada >= 4) {
       //   _perguntaSelecionada = 0;
       // }
@@ -45,6 +61,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   void _voltar() {
     setState(() {
       _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
     });
   }
 
@@ -63,7 +80,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder,
               )
-            : Resultado('Fim', _voltar),
+            : Resultado('Fim', _voltar, _pontuacaoTotal),
       ),
     );
   }
