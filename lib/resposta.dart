@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 class Resposta extends StatelessWidget {
   final String texto;
-  final funcao;
-  const Resposta(this.texto, this.funcao, {Key? key}) : super(key: key);
+  final void Function() funcao;
+  const Resposta(this.texto, this.funcao);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        // width: double.infinity - 50%,
-        margin: const EdgeInsets.all(10),
-        child: ElevatedButton(
-          onPressed: funcao,
-          child: Text(texto),
-        ));
+      margin: const EdgeInsets.all(10),
+      child: ElevatedButton(
+        onPressed: funcao,
+        child: Text(texto),
+      ),
+    );
   }
 }
