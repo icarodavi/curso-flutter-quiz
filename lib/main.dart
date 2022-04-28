@@ -52,9 +52,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
       _pontuacaoTotal += ponto;
-      // if (_perguntaSelecionada >= 4) {
-      //   _perguntaSelecionada = 0;
-      // }
     });
   }
 

@@ -41,7 +41,7 @@ class Resultado extends StatelessWidget {
         ),
         Center(
           child: Text(
-            'Sua pontuação é: ${_pontuacao} - ${fraseResultado}',
+            'Sua pontuação é: ${_pontuacao} / ${fraseResultado}',
             style: TextStyle(
               color: Colors.teal[800],
               fontSize: 30,
